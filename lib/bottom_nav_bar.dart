@@ -1,6 +1,7 @@
 import 'package:brand/screens/add_post_screen.dart';
 import 'package:brand/screens/forgot_password.dart';
 import 'package:brand/screens/home_screen.dart';
+import 'package:brand/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -16,7 +17,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<Widget> screens = [
     PostScreen(),
     AddPostsScreen(),
-    ForgotPassword(),
+    ProfileScreen(),
   ];
 
   void onTappedItem(int index){

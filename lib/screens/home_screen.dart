@@ -17,6 +17,7 @@ class PostScreen extends StatefulWidget {
 
 class _PostScreenState extends State<PostScreen> {
   final db = FirebaseDatabase.instance.ref("Post");
+  // final userDatabase = FirebaseDatabase.instance.ref("users");
   final searchFilter = TextEditingController();
   final editController = TextEditingController();
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -53,6 +54,7 @@ class _PostScreenState extends State<PostScreen> {
             child: TextField(
               controller: searchFilter,
               decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
                   hintText: "Search",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -62,6 +64,17 @@ class _PostScreenState extends State<PostScreen> {
               },
             ),
           ),
+
+          const SizedBox(height: 20),
+          // Displaying posts using FirebaseAnimatedList
+          // Expanded(
+          //   child: FirebaseAnimatedList(query: userDatabase, itemBuilder: (context, snapshot, animated, index){
+          //     return ListTile(
+          //       title: Text(snapshot.child("email").value.toString()),
+          //       subtitle: Text(snapshot.child("password").value.toString()),
+          //     );
+          //   }) 
+          //   ),
           Expanded(
             child: FirebaseAnimatedList(
                 query: db,
@@ -148,7 +161,9 @@ class _PostScreenState extends State<PostScreen> {
             child: TextField(
               controller: editController,
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
           ),
